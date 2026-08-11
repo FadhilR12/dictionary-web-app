@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="preload" as="image" href="./assets/GIF/Spin@1x-1.0s-200px-200px.gif">
   <link rel="stylesheet" href="./output.css">
   <title>Frontend Mentor | Dictionary web app</title>
 </head>
@@ -172,8 +173,8 @@
 
     </div>
 
+    <!-- loading -->
     <div x-show="loading && !initial" class="flex flex-col mt-[100px]">
-      <!-- loading -->
       <div class="w-full h-full text-[100px] font-bold text-purple-600 text-center">
         <img class="" src="./assets/GIF/Spin@1x-1.0s-200px-200px.gif" alt="">
       </div>
@@ -219,7 +220,7 @@
         },
 
         init() {
-          this.$watch('searchText', value => console.log(value))
+          this.$watch('loading', value => console.log(value))
         },
         toggleModal() {
           this.open = !this.open
@@ -253,11 +254,8 @@
                 partsOfSpeech: result.partsOfSpeech,
                 synonyms: result.synonyms,
               }
-
-              console.log(JSON.stringify(this.data.audio))
-
+              this.loading = false
             })
-          this.loading = false
         }
       }
     }
