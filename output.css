@@ -9,6 +9,8 @@
       "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-red-500: #FF5252;
+    --color-amber-950: oklch(27.9% 0.077 45.635);
     --color-purple-500: #A445ED;
     --color-purple-600: #8F19E8;
     --color-neutral-100: #F4F4F4;
@@ -202,11 +204,20 @@
   .left-\[3px\] {
     left: 3px;
   }
+  .mt-\[1em\] {
+    margin-top: 1em;
+  }
   .mt-\[10px\] {
     margin-top: 10px;
   }
   .mt-\[24px\] {
     margin-top: 24px;
+  }
+  .mt-\[50px\] {
+    margin-top: 50px;
+  }
+  .mt-auto {
+    margin-top: auto;
   }
   .mb-\[32px\] {
     margin-bottom: 32px;
@@ -223,6 +234,9 @@
   .table {
     display: table;
   }
+  .h-50 {
+    height: calc(var(--spacing) * 50);
+  }
   .h-\[1px\] {
     height: 1px;
   }
@@ -237,6 +251,12 @@
   }
   .h-\[48px\] {
     height: 48px;
+  }
+  .h-\[50\] {
+    height: 50;
+  }
+  .h-\[50px\] {
+    height: 50px;
   }
   .h-\[152px\] {
     height: 152px;
@@ -259,6 +279,9 @@
   .w-\[14px\] {
     width: 14px;
   }
+  .w-\[20px\] {
+    width: 20px;
+  }
   .w-\[28px\] {
     width: 28px;
   }
@@ -267,6 +290,9 @@
   }
   .w-\[50px\] {
     width: 50px;
+  }
+  .w-\[100px\] {
+    width: 100px;
   }
   .w-\[120px\] {
     width: 120px;
@@ -310,6 +336,9 @@
   .min-w-\[5px\] {
     min-width: 5px;
   }
+  .min-w-\[100px\] {
+    min-width: 100px;
+  }
   .min-w-\[375px\] {
     min-width: 375px;
   }
@@ -333,6 +362,9 @@
   }
   .justify-between {
     justify-content: space-between;
+  }
+  .justify-center {
+    justify-content: center;
   }
   .gap-\[8px\] {
     gap: 8px;
@@ -381,8 +413,14 @@
     border-bottom-style: var(--tw-border-style);
     border-bottom-width: 1px;
   }
+  .border-red-500 {
+    border-color: var(--color-red-500);
+  }
   .bg-\[\#979797\] {
     background-color: #979797;
+  }
+  .bg-amber-950 {
+    background-color: var(--color-amber-950);
   }
   .bg-neutral-100 {
     background-color: var(--color-neutral-100);
@@ -447,6 +485,9 @@
   .pl-7 {
     padding-left: calc(var(--spacing) * 7);
   }
+  .text-center {
+    text-align: center;
+  }
   .text-left {
     text-align: left;
   }
@@ -476,6 +517,12 @@
   }
   .text-\[32px\] {
     font-size: 32px;
+  }
+  .text-\[50px\] {
+    font-size: 50px;
+  }
+  .text-\[100px\] {
+    font-size: 100px;
   }
   .leading-\[1\.2\] {
     --tw-leading: 1.2;
@@ -520,6 +567,12 @@
   .text-purple-500 {
     color: var(--color-purple-500);
   }
+  .text-purple-600 {
+    color: var(--color-purple-600);
+  }
+  .text-red-500 {
+    color: var(--color-red-500);
+  }
   .italic {
     font-style: italic;
   }
@@ -535,6 +588,10 @@
     transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .placeholder\:font-bold::placeholder {
+    --tw-font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-bold);
   }
   @media (hover: hover) {
     .hover\:border-b:hover {
