@@ -97,7 +97,10 @@
             x-text="data?.pronunciation">
             /ˈkiːbɔːd/</p>
         </div>
-        <div>
+
+        <!-- play audio -->
+        <audio x-ref="audioPlayer" :src="data?.audio"></audio>
+        <div @click="toggleAudio()">
           <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 75 75">
             <g fill="#A445ED" fill-rule="evenodd">
               <circle cx="37.5" cy="37.5" r="37.5" opacity=".25" />
@@ -151,7 +154,8 @@
       </template>
     </div>
 
-    <div class="flex flex-col w-[327px] pt-[32px] md:w-[689px] lg:w-[736px]" x-show="data != null && !loading && !initial">
+    <div class="flex flex-col w-[327px] pt-[32px] md:w-[689px] lg:w-[736px]"
+      x-show="data != null && !loading && !initial">
       <!-- divider -->
       <div class="h-[1px] w-full bg-[#979797] mb-[32px]"></div>
 
@@ -168,17 +172,20 @@
 
     </div>
 
-    <div x-show="!loading && !initial" class="flex flex-col mt-[50px]">
-    <!-- loading -->
-      <div class="w-full h-full text-[100px] font-bold text-purple-600 text-center">LOADING...</div>
+    <div x-show="loading && !initial" class="flex flex-col mt-[100px]">
+      <!-- loading -->
+      <div class="w-full h-full text-[100px] font-bold text-purple-600 text-center">
+        <img class="" src="./assets/GIF/Spin@1x-1.0s-200px-200px.gif" alt="">
+      </div>
     </div>
 
     <!-- initial -->
-     <div x-show="!loading && initial" class="flex flex-col mt-[50px]">
-        <div class="w-full h-full text-[25px] font-bold text-purple-600 text-center">
-          Search everyword you know!!
-        </div>
-     </div>
+    <div x-show="!loading && initial" class="flex flex-col mt-50">
+    <div class="w-full h-full text-purple-600 text-center flex flex-col gap-[8px]">
+        <p class="text-xl font-bold">Expand your vocabulary</p>
+        <p>Search any word for clear definitions, hear accurate word pronunciations.</p>
+      </div>
+    </div>
 
   </div>
   </div>
@@ -194,6 +201,18 @@
         err: false,
         loading: false,
         initial: true,
+        isPlaying: false,
+
+        toggleAudio() {
+          if (this.isPlaying) {
+            this.$refs.audioPlayer.pause();
+            this.isPlaying = false;
+          } else {
+            this.$refs.audioPlayer.play();
+            this.isPlaying = true;
+          }
+          this.isPlaying = false
+        },
 
         get sourceText() {
           return 'https://en.wiktionary.org/wiki/' + this.searchText
@@ -235,7 +254,7 @@
                 synonyms: result.synonyms,
               }
 
-              console.log(JSON.stringify(this.data))
+              console.log(JSON.stringify(this.data.audio))
 
             })
           this.loading = false
